@@ -1,6 +1,18 @@
 1.<base/types.h>
 2.less_than_comparable
-3.BOOST_STATIC_ASSERT
-4.使用PRld64
-5.Timestamp实现以及测试
 
+3.BOOST_STATIC_ASSERT
+用于在编译时抛出assert和异常
+测试文件bsa.cc
+
+4.使用PRld64
+跨平台打印int_64(64位整数)
+在<base/types.h>中定义
+
+跨平台的做法
+#define__STDC_FORMAT_MACROS
+#include <inttypes.h>
+#undefine__STDC_FORMAT_MACROS
+printf("%" PRld64 "\n", value);
+
+5.Timestamp实现以及测试
