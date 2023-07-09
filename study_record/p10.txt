@@ -16,3 +16,56 @@
 printf("%" PRld64 "\n", value);
 
 5.Timestamp实现以及测试
+
+6.explicit关键字，一般用于构造函数，表示创建对象的时候不能进行隐式转换
+// CPP Program to illustrate default
+// constructor with
+// 'explicit' keyword
+#include <iostream>
+using namespace std;
+  
+class Complex {
+private:
+    double real;
+    double imag;
+  
+public:
+    // Default constructor
+    explicit Complex(double r = 0.0, double i = 0.0)
+        : real(r)
+        , imag(i)
+    {
+    }
+  
+    // A method to compare two Complex numbers
+    bool operator==(Complex rhs)
+    {
+        return (real == rhs.real && imag == rhs.imag)
+                   ? true
+                   : false;
+    }
+};
+  
+// Driver Code
+int main()
+{
+    // a Complex object
+    Complex com1(3.0, 0.0);
+  
+    if (com1 == 3.0)
+        cout << "Same";
+    else
+        cout << "Not Same";
+    return 0;
+}
+
+7.常量的命名规则：以k开头
+
+8.后缀gmtime_r中的后缀r表示是线程安全的
+
+9.noncopyable的实现和原理
+class noncopyable的基本思想是把构造函数和析构函数设置protected权限，
+这样子类可以调用，但是外面的类不能调用，那么当子类需要定义构造函数的时
+候不至于通不过编译。但是最关键的是noncopyable把拷贝构造函数和拷贝赋值
+函数做成了private的，继承自noncopyable的类在执行拷贝操作时会调用基类
+的拷贝操作，但是基类的拷贝操作是private的，因此无法调用，引发编译错误。
