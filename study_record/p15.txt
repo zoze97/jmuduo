@@ -1,0 +1,29 @@
+1.BlockingQueue<T>              无界缓冲区
+BoundedBlockingQueue<T>         有界缓冲区(需要判断队列是否已满)
+
+生产者，消费者模型
+(1)信号量
+生产者                              消费者
+p(semFull)                          p(semEmpty)
+lock(mutex)                         lock(mutex)
+queue.push(x)                       queue.pop(x)
+unlock(mutex)                       unlock(mutex)
+v(semEmpty)——> notEmpty.signal()    v(semFull)
+
+(2)条件变量
+生产者
+v(semEmpty)——> notEmpty.signal() 
+p(semEmpty)——>  while(queue.empty())
+                {
+                    notEmpty.wait();
+                }
+
+
+虚假唤醒问题：
+https://blog.csdn.net/weixin_44588532/article/details/123373316
+
+2.__builtin_expect 流水线优化
+http://www.manongjc.com/detail/6-ckffapwkohllsok.html
+https://my.oschina.net/moooofly/blog/175019
+https://clang.llvm.org/docs/ThreadSafetyAnalysis.html
+https://blog.csdn.net/daaikuaichuan/article/details/85251232

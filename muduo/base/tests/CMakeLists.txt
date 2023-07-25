@@ -1,6 +1,12 @@
 add_executable(atomic_unittest Atomic_unittest.cc)
 #target_link_libraries(atomic_unittest muduo_base)
 
+add_executable(blockingQueue_bench BlockingQueue_bench.cc)
+target_link_libraries(blockingQueue_bench muduo_base)
+
+add_executable(blockingQueue_bench2 BlockingQueue_bench2.cc)
+target_link_libraries(blockingQueue_bench2 muduo_base)
+
 add_executable(countDownLatch_test1 CountDownLatch_test1.cc)
 target_link_libraries(countDownLatch_test1 muduo_base)
 
