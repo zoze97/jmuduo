@@ -1,0 +1,4 @@
+线程安全Singleton类实现
+1.pthread_once
+2.atexit
+3.typedef char T_must_be_complete_type[sizeof(T) == 0 ? -1 : 1];
