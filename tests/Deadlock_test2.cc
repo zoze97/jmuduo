@@ -35,7 +35,7 @@ int main(void)
     pthread_create(&tid, NULL, doit, NULL);
     struct timespec ts = {1, 0};
     nanosleep(&ts, NULL);
-    if (&ts, NULL) 
+    if (fork() == 0) 
     {
         doit(NULL);
     }
